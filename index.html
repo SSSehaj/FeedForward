@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FeedForward — Turn Surplus Food Into Hope</title>
+  <meta name="description" content="FeedForward connects restaurants with NGOs to donate surplus food, reduce waste, and feed communities." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 1 8-2.5 1-4 2-5 3.5"/><path d="M5.2 17.5c1-1 2.5-2 4.8-2.5"/></svg>
+        <span>FeedForward</span>
+      </a>
+      <nav class="desktop-nav" id="desktop-nav">
+        <a href="vision-mission.html">Our Vision</a>
+        <a href="blogs.html">Blog</a>
+        <a href="tracking.html">Track Food</a>
+        <!-- Dynamic links injected by JS -->
+        <span id="nav-auth-area"></span>
+      </nav>
+      <button class="mobile-toggle" aria-label="Toggle menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="mobile-menu">
+      <nav class="container" id="mobile-nav-links">
+        <a href="vision-mission.html">Our Vision</a>
+        <a href="blogs.html">Blog</a>
+        <a href="tracking.html">Track Food</a>
+        <span id="mobile-auth-area"></span>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Login Modal -->
+  <div id="login-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeLoginModal()">&times;</button>
+      <h2>Login to FeedForward</h2>
+      <label style="display:block;font-size:.875rem;font-weight:500;margin-bottom:.5rem;">I am a</label>
+      <div class="role-picker">
+        <button type="button" class="role-btn active" id="role-restaurant" onclick="setLoginRole('restaurant')">🍽️ Restaurant</button>
+        <button type="button" class="role-btn" id="role-ngo" onclick="setLoginRole('ngo')">🤝 NGO</button>
+      </div>
+      <input type="text" id="login-name" class="modal-input" placeholder="e.g. The Green Table" required />
+      <button class="modal-submit" onclick="doLogin()">Login as Restaurant</button>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920&q=80" alt="Colorful spread of fresh food on a rustic table" />
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="container hero-content">
+      <span class="hero-badge">Nourishing Communities Together</span>
+      <h1>Every Meal<br><span class="italic">Deserves a</span> <span class="accent">Purpose</span></h1>
+      <p>Join restaurants across the city turning surplus food into hope. Connect with local NGOs and make every plate count.</p>
+      <div class="hero-buttons">
+        <a href="#donate" class="btn-primary">Start Donating</a>
+        <a href="#how-it-works" class="btn-outline">Learn How</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="how-it-works" class="how-it-works">
+    <div class="container">
+      <div class="text-center" style="max-width:36rem;margin:0 auto 4rem;">
+        <span class="section-label">Simple Process</span>
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-desc">Three effortless steps to turn your extra food into meals that matter.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8"/><path d="M15 15 3.3 3.3a4.2 4.2 0 0 0 0 6l7.3 7.3c.7.7 2 .7 2.8 0L15 15Z"/><path d="m2 2 20 20"/></svg>
+          </div>
+          <span class="step-number">1</span>
+          <h3>List Surplus Food</h3>
+          <p>Restaurants log their excess meals, ingredients, or prepared dishes at the end of each day.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+          </div>
+          <span class="step-number">2</span>
+          <h3>NGO Picks Up</h3>
+          <p>Nearby NGOs receive notifications and schedule a convenient pickup from your restaurant.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          </div>
+          <span class="step-number">3</span>
+          <h3>Feed Communities</h3>
+          <p>Fresh, quality food reaches those who need it most — reducing waste and spreading kindness.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="impact">
+    <div class="container">
+      <h2>Our Impact So Far</h2>
+      <div class="stats-grid">
+        <div class="stat-item"><div class="stat-value">12,400+</div><div class="stat-label">Meals Donated</div></div>
+        <div class="stat-item"><div class="stat-value">85</div><div class="stat-label">Restaurant Partners</div></div>
+        <div class="stat-item"><div class="stat-value">32</div><div class="stat-label">NGO Partners</div></div>
+        <div class="stat-item"><div class="stat-value">4.2 tons</div><div class="stat-label">Food Waste Saved</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="restaurants">
+    <div class="container">
+      <div class="text-center" style="max-width:36rem;margin:0 auto;">
+        <span class="section-label">Community Heroes</span>
+        <h2 class="section-title">Top Donor Restaurants</h2>
+        <p class="section-desc">These incredible partners lead the way in feeding our communities.</p>
+      </div>
+      <div class="restaurants-grid">
+        <div class="restaurant-card"><div class="restaurant-avatar">GT</div><h3>The Green Table</h3><p class="restaurant-type">Farm-to-Table</p><div class="restaurant-meals"><div class="count">2,450</div><p class="label">meals donated</p></div></div>
+        <div class="restaurant-card"><div class="restaurant-avatar">MR</div><h3>Mama Rosa's Kitchen</h3><p class="restaurant-type">Italian</p><div class="restaurant-meals"><div class="count">1,820</div><p class="label">meals donated</p></div></div>
+        <div class="restaurant-card"><div class="restaurant-avatar">SR</div><h3>Spice Route</h3><p class="restaurant-type">Indian Fusion</p><div class="restaurant-meals"><div class="count">1,350</div><p class="label">meals donated</p></div></div>
+        <div class="restaurant-card"><div class="restaurant-avatar">HH</div><h3>Harvest & Hearth</h3><p class="restaurant-type">Bakery & Café</p><div class="restaurant-meals"><div class="count">980</div><p class="label">meals donated</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="donate" class="donate">
+    <div class="container">
+      <div style="max-width:640px;margin:0 auto;">
+        <div class="text-center" style="margin-bottom:3rem;">
+          <span class="section-label">Get Involved</span>
+          <h2 class="section-title">Donate Your Surplus</h2>
+          <p class="section-desc">Fill out the form below and we'll connect you with an NGO partner.</p>
+        </div>
+        <div id="donate-area">
+          <!-- Filled by JS based on login state -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 1 8-2.5 1-4 2-5 3.5"/><path d="M5.2 17.5c1-1 2.5-2 4.8-2.5"/></svg>
+        <span>FeedForward</span>
+      </a>
+      <p>© 2026 FeedForward. Nourishing communities, one meal at a time.</p>
+    </div>
+  </footer>
+  <div id="toast" class="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>

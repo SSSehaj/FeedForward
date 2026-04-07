@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NGO Urgent Needs | FeedForward</title>
+  <meta name="description" content="See which NGOs urgently need food donations." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 1 8-2.5 1-4 2-5 3.5"/><path d="M5.2 17.5c1-1 2.5-2 4.8-2.5"/></svg>
+        <span>FeedForward</span>
+      </a>
+      <nav class="desktop-nav" id="desktop-nav">
+        <a href="vision-mission.html">Our Vision</a>
+        <a href="blogs.html">Blog</a>
+        <a href="tracking.html">Track Food</a>
+        <!-- Dynamic links injected by JS -->
+        <span id="nav-auth-area"></span>
+      </nav>
+      <button class="mobile-toggle" aria-label="Toggle menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="mobile-menu">
+      <nav class="container" id="mobile-nav-links">
+        <a href="vision-mission.html">Our Vision</a>
+        <a href="blogs.html">Blog</a>
+        <a href="tracking.html">Track Food</a>
+        <span id="mobile-auth-area"></span>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Login Modal -->
+  <div id="login-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeLoginModal()">&times;</button>
+      <h2>Login to FeedForward</h2>
+      <label style="display:block;font-size:.875rem;font-weight:500;margin-bottom:.5rem;">I am a</label>
+      <div class="role-picker">
+        <button type="button" class="role-btn active" id="role-restaurant" onclick="setLoginRole('restaurant')">🍽️ Restaurant</button>
+        <button type="button" class="role-btn" id="role-ngo" onclick="setLoginRole('ngo')">🤝 NGO</button>
+      </div>
+      <input type="text" id="login-name" class="modal-input" placeholder="e.g. The Green Table" required />
+      <button class="modal-submit" onclick="doLogin()">Login as Restaurant</button>
+    </div>
+  </div>
+
+  <section class="dashboard-hero">
+    <div class="container">
+      <h1>NGO Urgent Needs</h1>
+      <p>See which NGOs urgently need food donations. Help where it matters most.</p>
+    </div>
+  </section>
+
+  <section class="dashboard-section">
+    <div class="container" style="max-width:960px;">
+      <div id="needs-list">
+        <div class="empty-state">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+          <p>No urgent needs posted yet. Check back later!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 1 8-2.5 1-4 2-5 3.5"/><path d="M5.2 17.5c1-1 2.5-2 4.8-2.5"/></svg>
+        <span>FeedForward</span>
+      </a>
+      <p>© 2026 FeedForward. Nourishing communities, one meal at a time.</p>
+    </div>
+  </footer>
+  <div id="toast" class="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>

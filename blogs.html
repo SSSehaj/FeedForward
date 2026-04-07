@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Stories of Impact | FeedForward</title>
+  <meta name="description" content="Real stories of restaurants, volunteers, and communities coming together to feed the needy through FeedForward." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 1 8-2.5 1-4 2-5 3.5"/><path d="M5.2 17.5c1-1 2.5-2 4.8-2.5"/></svg>
+        <span>FeedForward</span>
+      </a>
+      <nav class="desktop-nav" id="desktop-nav">
+        <a href="vision-mission.html">Our Vision</a>
+        <a href="blogs.html">Blog</a>
+        <a href="tracking.html">Track Food</a>
+        <!-- Dynamic links injected by JS -->
+        <span id="nav-auth-area"></span>
+      </nav>
+      <button class="mobile-toggle" aria-label="Toggle menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="mobile-menu">
+      <nav class="container" id="mobile-nav-links">
+        <a href="vision-mission.html">Our Vision</a>
+        <a href="blogs.html">Blog</a>
+        <a href="tracking.html">Track Food</a>
+        <span id="mobile-auth-area"></span>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Login Modal -->
+  <div id="login-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeLoginModal()">&times;</button>
+      <h2>Login to FeedForward</h2>
+      <label style="display:block;font-size:.875rem;font-weight:500;margin-bottom:.5rem;">I am a</label>
+      <div class="role-picker">
+        <button type="button" class="role-btn active" id="role-restaurant" onclick="setLoginRole('restaurant')">🍽️ Restaurant</button>
+        <button type="button" class="role-btn" id="role-ngo" onclick="setLoginRole('ngo')">🤝 NGO</button>
+      </div>
+      <input type="text" id="login-name" class="modal-input" placeholder="e.g. The Green Table" required />
+      <button class="modal-submit" onclick="doLogin()">Login as Restaurant</button>
+    </div>
+  </div>
+
+  <section class="blog-hero">
+    <div class="container">
+      <span class="section-label">Stories of Impact</span>
+      <h1>Our Blog</h1>
+      <p>Real stories of restaurants, volunteers, and communities coming together to feed the needy.</p>
+    </div>
+  </section>
+
+  <section class="featured-post">
+    <div class="container">
+      <div class="featured-card">
+        <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=800&q=80" alt="Community kitchen feeding families" loading="lazy" />
+        <div class="featured-card-body">
+          <span class="blog-tag">Community Story</span>
+          <h2>How a Community Kitchen Fed 500 Families in One Weekend</h2>
+          <p>When three restaurants in downtown joined forces with FeedForward, they created a pop-up community kitchen that served over 500 families.</p>
+          <div class="featured-meta"><span>📅 March 28, 2026</span><span>by Priya Sharma</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="blog-grid-section">
+    <div class="container" style="max-width:960px;">
+      <h2>More Stories</h2>
+      <div class="blog-grid">
+        <article class="blog-card"><div class="img-wrap"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80" alt="Chef Marco" loading="lazy" /></div><div class="blog-card-body"><span class="blog-tag">Restaurant Spotlight</span><h3>Chef Marco's Journey: From Waste to Purpose</h3><p>Chef Marco used to discard 30kg of food daily. After joining FeedForward, every gram finds a home.</p><div class="blog-card-footer"><span>March 15, 2026</span><span>Daniel Ortiz</span></div></div></article>
+        <article class="blog-card"><div class="img-wrap"><img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80" alt="Children receiving meals" loading="lazy" /></div><div class="blog-card-body"><span class="blog-tag">Photo Essay</span><h3>The Smiles That Keep Us Going: A Photo Essay</h3><p>Photographer Aisha followed our delivery volunteers for a week. The joy on children's faces tells the whole story.</p><div class="blog-card-footer"><span>February 22, 2026</span><span>Aisha Bello</span></div></div></article>
+        <article class="blog-card"><div class="img-wrap"><img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80" alt="Senior care" loading="lazy" /></div><div class="blog-card-body"><span class="blog-tag">NGO Partnership</span><h3>Nourishing Elders: Our Senior Care Initiative</h3><p>Our partnership with 12 restaurants now delivers hot meals to 8 senior centers weekly.</p><div class="blog-card-footer"><span>February 10, 2026</span><span>Lin Wei</span></div></div></article>
+        <article class="blog-card"><div class="img-wrap"><img src="https://images.unsplash.com/photo-1594708767771-a7502209ff51?w=800&q=80" alt="Warehouse sorting" loading="lazy" /></div><div class="blog-card-body"><span class="blog-tag">Operations</span><h3>Behind the Scenes: How We Sort 4 Tons of Food Weekly</h3><p>Our warehouse volunteers are the unsung heroes organizing thousands of meals every week.</p><div class="blog-card-footer"><span>January 30, 2026</span><span>Sarah Mitchell</span></div></div></article>
+        <article class="blog-card"><div class="img-wrap"><img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=800&q=80" alt="Community dinner" loading="lazy" /></div><div class="blog-card-body"><span class="blog-tag">Events</span><h3>The Long Table: When Strangers Become Family</h3><p>Every month, donors, recipients, and volunteers share a meal together.</p><div class="blog-card-footer"><span>January 14, 2026</span><span>Ravi Patel</span></div></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="blog-cta">
+    <div class="container">
+      <h2>Have a Story to Share?</h2>
+      <p>If your restaurant or NGO has been part of the FeedForward journey, we'd love to hear from you.</p>
+      <a href="index.html#donate" class="btn-green">Get In Touch</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 1 8-2.5 1-4 2-5 3.5"/><path d="M5.2 17.5c1-1 2.5-2 4.8-2.5"/></svg>
+        <span>FeedForward</span>
+      </a>
+      <p>© 2026 FeedForward. Nourishing communities, one meal at a time.</p>
+    </div>
+  </footer>
+  <div id="toast" class="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>

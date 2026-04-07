@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Track Consignment | FeedForward</title>
+  <meta name="description" content="Track your food donation consignments in real-time." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 1 8-2.5 1-4 2-5 3.5"/><path d="M5.2 17.5c1-1 2.5-2 4.8-2.5"/></svg>
+        <span>FeedForward</span>
+      </a>
+      <nav class="desktop-nav" id="desktop-nav">
+        <a href="vision-mission.html">Our Vision</a>
+        <a href="blogs.html">Blog</a>
+        <a href="tracking.html">Track Food</a>
+        <!-- Dynamic links injected by JS -->
+        <span id="nav-auth-area"></span>
+      </nav>
+      <button class="mobile-toggle" aria-label="Toggle menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="mobile-menu">
+      <nav class="container" id="mobile-nav-links">
+        <a href="vision-mission.html">Our Vision</a>
+        <a href="blogs.html">Blog</a>
+        <a href="tracking.html">Track Food</a>
+        <span id="mobile-auth-area"></span>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Login Modal -->
+  <div id="login-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeLoginModal()">&times;</button>
+      <h2>Login to FeedForward</h2>
+      <label style="display:block;font-size:.875rem;font-weight:500;margin-bottom:.5rem;">I am a</label>
+      <div class="role-picker">
+        <button type="button" class="role-btn active" id="role-restaurant" onclick="setLoginRole('restaurant')">🍽️ Restaurant</button>
+        <button type="button" class="role-btn" id="role-ngo" onclick="setLoginRole('ngo')">🤝 NGO</button>
+      </div>
+      <input type="text" id="login-name" class="modal-input" placeholder="e.g. The Green Table" required />
+      <button class="modal-submit" onclick="doLogin()">Login as Restaurant</button>
+    </div>
+  </div>
+
+  <section class="tracking-hero">
+    <div class="container">
+      <h1>Track Your Impact</h1>
+      <p>Enter your Consignment ID below to see the real-time status of your food donation.</p>
+    </div>
+  </section>
+
+  <section class="tracking-section">
+    <div class="container">
+      <form id="tracking-form" class="tracking-search">
+        <input type="text" id="tracking-input" required placeholder="Enter Consignment ID (e.g. FF-89302)" />
+        <button type="submit" class="btn-green">Track Order</button>
+      </form>
+
+      <div id="tracking-result" class="tracking-result">
+        <div class="tracking-header">
+          <div>
+            <span class="tracking-eta">Tracking ID</span>
+            <div id="display-track-id" class="tracking-id"></div>
+          </div>
+          <div style="text-align:right;">
+            <span class="tracking-eta">Status</span>
+            <div id="display-status" class="tracking-id" style="color:var(--fg);text-transform:capitalize;"></div>
+          </div>
+        </div>
+
+        <div class="timeline" id="tracking-timeline">
+          <div class="timeline-step" data-step="listed">
+            <div class="timeline-icon">✓</div>
+            <div class="timeline-label">Donation Listed</div>
+          </div>
+          <div class="timeline-step" data-step="ngo_accepted">
+            <div class="timeline-icon">✓</div>
+            <div class="timeline-label">NGO Accepted</div>
+          </div>
+          <div class="timeline-step" data-step="out_for_pickup">
+            <div class="timeline-icon">🚚</div>
+            <div class="timeline-label">Out for Pickup</div>
+          </div>
+          <div class="timeline-step" data-step="delivered">
+            <div class="timeline-icon">❤</div>
+            <div class="timeline-label">Delivered Safely</div>
+          </div>
+        </div>
+
+        <div class="tracking-details">
+          <div class="detail-group"><h4>From Restaurant</h4><p id="track-restaurant"></p></div>
+          <div class="detail-group"><h4>To NGO</h4><p id="track-ngo"></p></div>
+          <div class="detail-group"><h4>Food Type</h4><p id="track-food-details"></p></div>
+          <div class="detail-group"><h4>NGO Confirmed</h4><p id="track-confirmed"></p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 1 8-2.5 1-4 2-5 3.5"/><path d="M5.2 17.5c1-1 2.5-2 4.8-2.5"/></svg>
+        <span>FeedForward</span>
+      </a>
+      <p>© 2026 FeedForward. Nourishing communities, one meal at a time.</p>
+    </div>
+  </footer>
+  <div id="toast" class="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
